@@ -1,0 +1,31 @@
+﻿<Window x:Class="ExpenseTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpenseTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <StackPanel>
+
+            <TextBlock Text="Personal Expense Tracker"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+            <TextBlock Text="Current Balance: 0 VND"
+                   FontSize="18"
+                   Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <Button Content="Add Income" Width="120" Margin="5"/>
+                <Button Content="Add Expense" Width="120" Margin="5"/>
+            </StackPanel>
+
+            <DataGrid Name="TransactionGrid"
+                  Height="300"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
