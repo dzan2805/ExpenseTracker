@@ -130,7 +130,7 @@
 
             <!-- FILTER -->
             <ComboBox Grid.Column="1"
-                      Height="42"
+                      Height="43"
                       FontSize="15"
                       SelectedIndex="0">
 

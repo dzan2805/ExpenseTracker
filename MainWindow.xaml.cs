@@ -20,7 +20,7 @@ namespace ExpenseTracker
                 new
                 {
                     Title = "Coffee",
-                    Amount = "50,000 VND",
+                    Amount = "45,000 VND",
                     Type = "Expense",
                     Category = "Food",
                     Date = DateTime.Now.ToString("dd/MM/yyyy")
