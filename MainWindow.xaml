@@ -3,29 +3,203 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExpenseTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Expense Tracker"
+        Height="650"
+        Width="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA">
+
     <Grid Margin="20">
-        <StackPanel>
 
-            <TextBlock Text="Personal Expense Tracker"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   Margin="0,0,0,20"/>
+        <!-- ROW DEFINITIONS -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <TextBlock Text="Current Balance: 0 VND"
-                   FontSize="18"
-                   Margin="0,0,0,20"/>
+        <!-- ========================= -->
+        <!-- CURRENT BALANCE -->
+        <!-- ========================= -->
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                <Button Content="Add Income" Width="120" Margin="5"/>
-                <Button Content="Add Expense" Width="120" Margin="5"/>
+        <Border Grid.Row="0"
+                Background="White"
+                CornerRadius="15"
+                Padding="20"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1">
+
+            <StackPanel>
+
+                <TextBlock Text="Current Balance"
+                           FontSize="18"
+                           Foreground="Gray"/>
+
+                <TextBlock Text="0 VND"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           Foreground="#2E7D32"
+                           Margin="0,5,0,0"/>
+
             </StackPanel>
 
-            <DataGrid Name="TransactionGrid"
-                  Height="300"/>
+        </Border>
+
+        <!-- ========================= -->
+        <!-- BUTTONS -->
+        <!-- ========================= -->
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal">
+
+            <!-- ADD INCOME -->
+            <Button Content="Add Income"
+                    Width="140"
+                    Height="45"
+                    Margin="0,0,10,0"
+                    FontSize="15"
+                    FontWeight="SemiBold"
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
+
+            <!-- ADD EXPENSE -->
+            <Button Content="Add Expense"
+                    Width="140"
+                    Height="45"
+                    Margin="0,0,10,0"
+                    FontSize="15"
+                    FontWeight="SemiBold"
+                    Background="#F44336"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
+
+            <!-- EDIT -->
+            <Button Content="Edit"
+                    Width="120"
+                    Height="45"
+                    Margin="0,0,10,0"
+                    FontSize="15"
+                    FontWeight="SemiBold"
+                    Background="#2196F3"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
+
+            <!-- DELETE -->
+            <Button Content="Delete"
+                    Width="120"
+                    Height="45"
+                    FontSize="15"
+                    FontWeight="SemiBold"
+                    Background="#616161"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
 
         </StackPanel>
+
+        <!-- ========================= -->
+        <!-- SEARCH + FILTER -->
+        <!-- ========================= -->
+
+        <Grid Grid.Row="4">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- SEARCH BOX -->
+            <TextBox Grid.Column="0"
+                     Height="42"
+                     Margin="0,0,15,0"
+                     FontSize="15"
+                     Padding="10"
+                     VerticalContentAlignment="Center"
+                     Text="Search transaction..."
+                     BorderBrush="#D0D0D0"
+                     BorderThickness="1"/>
+
+            <!-- FILTER -->
+            <ComboBox Grid.Column="1"
+                      Height="42"
+                      FontSize="15"
+                      SelectedIndex="0">
+
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="Food"/>
+                <ComboBoxItem Content="Transport"/>
+                <ComboBoxItem Content="Shopping"/>
+                <ComboBoxItem Content="Bills"/>
+                <ComboBoxItem Content="Entertainment"/>
+
+            </ComboBox>
+
+        </Grid>
+
+        <!-- ========================= -->
+        <!-- DATA GRID -->
+        <!-- ========================= -->
+
+        <Border Grid.Row="6"
+                Background="White"
+                CornerRadius="15"
+                Padding="10"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1">
+
+            <DataGrid x:Name="transactionGrid"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      FontSize="14"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="None"
+                      RowHeight="40"
+                      AlternatingRowBackground="#F8F9FB"
+                      BorderThickness="0"
+                      SelectionMode="Single">
+
+                <DataGrid.Columns>
+
+                    <!-- TITLE -->
+                    <DataGridTextColumn Header="Title"
+                                        Binding="{Binding Title}"
+                                        Width="*"/>
+
+                    <!-- AMOUNT -->
+                    <DataGridTextColumn Header="Amount"
+                                        Binding="{Binding Amount}"
+                                        Width="150"/>
+
+                    <!-- TYPE -->
+                    <DataGridTextColumn Header="Type"
+                                        Binding="{Binding Type}"
+                                        Width="150"/>
+
+                    <!-- CATEGORY -->
+                    <DataGridTextColumn Header="Category"
+                                        Binding="{Binding Category}"
+                                        Width="180"/>
+
+                    <!-- DATE -->
+                    <DataGridTextColumn Header="Date"
+                                        Binding="{Binding Date}"
+                                        Width="180"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
     </Grid>
+
 </Window>
