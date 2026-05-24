@@ -5,8 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpenseTracker.Views"
         mc:Ignorable="d"
-        Title="AddTransactionWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Thêm Giao Dịch Mới" Height="400" Width="420" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 1. Title -->
+        <Label Content="Tiêu đề:" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtTitle" Grid.Row="0" Grid.Column="1" Margin="5" Height="25"/>
+
+        <!-- 2. Amount -->
+        <Label Content="Số tiền:" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtAmount" Grid.Row="1" Grid.Column="1" Margin="5" Height="25"/>
+
+        <!-- 3. Date -->
+        <Label Content="Ngày tháng:" Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <DatePicker x:Name="dpDate" Grid.Row="2" Grid.Column="1" Margin="5" Height="25"/>
+
+        <!-- 4. Type (Income / Expense) -->
+        <Label Content="Loại:" Grid.Row="3" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="5">
+            <RadioButton x:Name="rbExpense" Content="Chi tiêu" IsChecked="True" Margin="0,0,20,0" Checked="rbType_Changed"/>
+            <RadioButton x:Name="rbIncome" Content="Thu nhập" Checked="rbType_Changed"/>
+        </StackPanel>
+
+        <!-- 5. Category -->
+        <Label Content="Danh mục:" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <ComboBox x:Name="cbCategory" Grid.Row="4" Grid.Column="1" Margin="5" Height="25"/>
+
+        <!-- Buttons (Save / Cancel) -->
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
+            <Button x:Name="btnSave" Content="Lưu" Width="80" Height="30" Margin="0,0,10,0" Click="btnSave_Click" Background="#4CAF50" Foreground="white" FontWeight="Bold" IsDefault="True"/>
+            <Button x:Name="btnCancel" Content="Hủy" Width="80" Height="30" Click="btnCancel_Click" IsCancel="True"/>
+        </StackPanel>
     </Grid>
 </Window>
