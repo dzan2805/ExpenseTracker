@@ -56,7 +56,7 @@ namespace ExpenseTracker.Services
                 {
                     string jsonString = File.ReadAllText(_filePath);
                     var transactions = JsonSerializer.Deserialize<List<Transaction>>(jsonString);
-                    if (transactions != null) return transactions;
+                    return transactions ?? new List<Transaction>();
                 }
             }
             catch (JsonException)

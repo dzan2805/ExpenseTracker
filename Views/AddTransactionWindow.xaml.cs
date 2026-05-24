@@ -6,17 +6,44 @@ namespace ExpenseTracker.Views
 {
     public partial class AddTransactionWindow : Window
     {
-        public Transaction? NewTransaction { get; private set; } 
+        public Transaction? NewTransaction { get; private set; }
 
-        public AddTransactionWindow()
+        public AddTransactionWindow(bool isIncome = false)
         {
             InitializeComponent();
-            InitializeCategories();
-            
-            if (dpDate != null)
+
+            // Chọn radio button mặc định
+            if (isIncome)
             {
-                dpDate.SelectedDate = DateTime.Now;
+                rbIncome.IsChecked = true;
             }
+            else
+            {
+                rbExpense.IsChecked = true;
+            }
+
+            InitializeCategories();
+
+            dpDate.SelectedDate = DateTime.Now;
+        }
+
+        public AddTransactionWindow(Transaction existingTransaction)
+        {
+            InitializeComponent();
+
+            // Đổ dữ liệu cũ vào form
+            txtTitle.Text = existingTransaction.Title;
+            txtAmount.Text = existingTransaction.Amount.ToString();
+            dpDate.SelectedDate = existingTransaction.Date;
+
+            if (existingTransaction is Income)
+                rbIncome.IsChecked = true;
+            else
+                rbExpense.IsChecked = true;
+
+            InitializeCategories();
+
+            cbCategory.Text = existingTransaction.Category;
         }
 
         private void InitializeCategories()
@@ -77,7 +104,8 @@ namespace ExpenseTracker.Views
                 {
                     Title = title,
                     Amount = amount,
-                    Date = date
+                    Date = date,
+                    Category = cbCategory.Text
                 };
             }
             else
@@ -86,7 +114,8 @@ namespace ExpenseTracker.Views
                 {
                     Title = title,
                     Amount = amount,
-                    Date = date
+                    Date = date,
+                    Category = cbCategory.Text
                 };
             }
 
