@@ -10,7 +10,7 @@ namespace ExpenseTracker.Models
     {
         public override string GetTransactionType()
         {
-            return "Income";
+            return "Thu nhập";
         }
     }
 }

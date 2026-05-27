@@ -105,15 +105,15 @@ namespace ExpenseTracker
         {
             if (transactionGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please select a transaction to delete.");
+                MessageBox.Show("Vui lòng chọn giao dịch cần xóa.");
                 return;
             }
 
             Transaction selected = (Transaction)transactionGrid.SelectedItem;
 
             var result = MessageBox.Show(
-                "Are you sure you want to delete?",
-                "Confirm",
+                "Bạn có chắc muốn xóa giao dịch này không?",
+                "Xác nhận",
                 MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
@@ -142,18 +142,24 @@ namespace ExpenseTracker
         }
         private void cbFilter_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (transactions == null)
+                return;
+
             if (cbFilter.SelectedItem == null)
                 return;
 
-            string category = ((System.Windows.Controls.ComboBoxItem) cbFilter.SelectedItem).Content.ToString();
+            string category =
+                ((System.Windows.Controls.ComboBoxItem)cbFilter.SelectedItem).Content.ToString();
 
-            if (category == "All")
+            if (category == "Tất cả")
             {
                 RefreshDataGrid();
                 return;
             }
 
-            var filtered = transactions.Where(t => (t.Category ?? "") == category).ToList();
+            var filtered = transactions
+                .Where(t => (t.Category ?? "") == category)
+                .ToList();
 
             transactionGrid.ItemsSource = null;
             transactionGrid.ItemsSource = filtered;
@@ -162,7 +168,7 @@ namespace ExpenseTracker
         {
             if (transactionGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please select a transaction to edit.");
+                MessageBox.Show("Vui lòng chọn giao dịch cần chỉnh sửa.");
                 return;
             }
 

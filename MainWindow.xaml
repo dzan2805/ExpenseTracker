@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Expense Tracker"
+        Title="Quản Lý Chi Tiêu Cá Nhân"
         Height="650"
         Width="1100"
         WindowStartupLocation="CenterScreen"
@@ -36,7 +36,7 @@
 
             <StackPanel>
 
-                <TextBlock Text="Current Balance"
+                <TextBlock Text="Số dư hiện tại"
                            FontSize="18"
                            Foreground="Gray"/>
 
@@ -59,7 +59,7 @@
                     Orientation="Horizontal">
 
             <!-- ADD INCOME -->
-            <Button Content="Add Income"
+            <Button Content="Thêm Thu Nhập"
                     Click="AddIncome_Click"
                     Width="140"
                     Height="45"
@@ -72,7 +72,7 @@
                     Cursor="Hand"/>
 
             <!-- ADD EXPENSE -->
-            <Button Content="Add Expense"
+            <Button Content="Thêm Chi Tiêu"
                     Click="AddExpense_Click"
                     Width="140"
                     Height="45"
@@ -85,7 +85,7 @@
                     Cursor="Hand"/>
 
             <!-- EDIT -->
-            <Button Content="Edit"
+            <Button Content="Chỉnh Sửa"
                     Click="Edit_Click"
                     Width="120"
                     Height="45"
@@ -98,7 +98,7 @@
                     Cursor="Hand"/>
 
             <!-- DELETE -->
-            <Button Content="Delete"
+            <Button Content="Xóa"
                     Click="Delete_Click"
                     Width="120"
                     Height="45"
@@ -142,15 +142,15 @@
                       FontSize="15"
                       SelectedIndex="0">
 
-                <ComboBoxItem Content="All"/>
-                <ComboBoxItem Content="Food"/>
-                <ComboBoxItem Content="Transport"/>
-                <ComboBoxItem Content="Shopping"/>
-                <ComboBoxItem Content="Bills"/>
-                <ComboBoxItem Content="Entertainment"/>
-                <ComboBoxItem Content="Salary"/>
-                <ComboBoxItem Content="Bonus"/>
-                <ComboBoxItem Content="Other Income"/>
+                <ComboBoxItem Content="Tất cả"/>
+                <ComboBoxItem Content="Ăn uống"/>
+                <ComboBoxItem Content="Di chuyển"/>
+                <ComboBoxItem Content="Mua sắm"/>
+                <ComboBoxItem Content="Hóa đơn"/>
+                <ComboBoxItem Content="Giải trí"/>
+                <ComboBoxItem Content="Lương"/>
+                <ComboBoxItem Content="Thưởng"/>
+                <ComboBoxItem Content="Thu nhập khác"/>
 
             </ComboBox>
 
@@ -182,27 +182,27 @@
                 <DataGrid.Columns>
 
                     <!-- TITLE -->
-                    <DataGridTextColumn Header="Title"
+                    <DataGridTextColumn Header="Tiêu đề"
                                         Binding="{Binding Title}"
                                         Width="*"/>
 
                     <!-- AMOUNT -->
-                    <DataGridTextColumn Header="Amount"
+                    <DataGridTextColumn Header="Số tiền"
                                         Binding="{Binding Amount}"
                                         Width="150"/>
 
                     <!-- TYPE -->
-                    <DataGridTextColumn Header="Type"
+                    <DataGridTextColumn Header="Loại"
                                         Binding="{Binding Type}"
                                         Width="150"/>
 
                     <!-- CATEGORY -->
-                    <DataGridTextColumn Header="Category"
+                    <DataGridTextColumn Header="Danh mục"
                                         Binding="{Binding Category}"
                                         Width="180"/>
 
                     <!-- DATE -->
-                    <DataGridTextColumn Header="Date"
+                    <DataGridTextColumn Header="Ngày"
                                         Binding="{Binding Date, StringFormat=dd/MM/yyyy}"
                                         Width="180"/>
 

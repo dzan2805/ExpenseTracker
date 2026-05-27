@@ -53,17 +53,17 @@ namespace ExpenseTracker.Views
             cbCategory.Items.Clear();
             if (rbExpense?.IsChecked == true)
             {
-                cbCategory.Items.Add("Food");
-                cbCategory.Items.Add("Transport");
-                cbCategory.Items.Add("Shopping");
-                cbCategory.Items.Add("Bills");
-                cbCategory.Items.Add("Entertainment");
+                cbCategory.Items.Add("Ăn uống");
+                cbCategory.Items.Add("Di chuyển");
+                cbCategory.Items.Add("Mua sắm");
+                cbCategory.Items.Add("Hóa đơn");
+                cbCategory.Items.Add("Giải trí");
             }
             else
             {
-                cbCategory.Items.Add("Salary");
-                cbCategory.Items.Add("Bonus");
-                cbCategory.Items.Add("Other Income");
+                cbCategory.Items.Add("Lương");
+                cbCategory.Items.Add("Thưởng");
+                cbCategory.Items.Add("Thu nhập khác");
             }
             cbCategory.SelectedIndex = 0;
         }
